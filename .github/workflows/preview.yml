@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: preview
+
+# every pr gets https://xhr.dev/pr-preview/pr-<n>/, published to the gh-pages
+# branch and removed again when the pr closes. same-repo prs only: fork and
+# dependabot prs get a read-only token, so they cannot push the branch.
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - LICENSE
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository
+      && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        if: github.event.action != 'closed'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+        if: github.event.action != 'closed'
+      - run: npm run build
+        if: github.event.action != 'closed'
+        env:
+          # subpath the site is served from; read by next.config.ts, and also
+          # flips robots to noindex
+          NEXT_PUBLIC_BASE_PATH: /pr-preview/pr-${{ github.event.pull_request.number }}
+      - uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: out

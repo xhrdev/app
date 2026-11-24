@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: pr
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - LICENSE
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    uses: xhrdev/actions/.github/workflows/pr.yml@master
+    secrets: inherit
+    permissions:
+      contents: read
+      pull-requests: write
+      packages: read
+
+  dependabot-approve-and-automerge:
+    uses: xhrdev/actions/.github/workflows/dependabot-approve-and-automerge.yml@master
+    needs:
+      - build-and-test
+    permissions:
+      pull-requests: write
+      contents: write

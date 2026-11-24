@@ -1,0 +1,17 @@
+{
+  "projectId": "c8ad2877-b6b0-4b7c-8371-391edf10631a",
+  "shape": "package",
+  "pkg": "@xhrdev/app",
+  "globalName": "XhrdevUI",
+  "srcDir": "src/components/ui",
+  "tsconfig": "./tsconfig.json",
+  "cssEntry": "./.design-sync/compiled/chunks/tailwind-compiled.css",
+  "entry": "./src/components/ui/index.ts",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Navbar": {
+      "cardMode": "single",
+      "primaryStory": "Default"
+    }
+  }
+}

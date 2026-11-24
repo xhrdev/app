@@ -1,0 +1,26 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignoreDependencies": [
+    // peer dependency of @testing-library/react; nothing imports it by name
+    "@testing-library/dom",
+    "@types/testing-library__cypress",
+    "@types/testing-library__react",
+    "@types/testing-library__user-event",
+    "@testing-library/cypress",
+    "@testing-library/react",
+    "@testing-library/user-event",
+    "eslint-config-next",
+    "@next/eslint-plugin-next",
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser",
+    "eslint-plugin-cypress",
+    "eslint-plugin-n",
+    "eslint-plugin-no-unsanitized",
+    "eslint-plugin-perfectionist",
+    "eslint-plugin-prettier",
+    "eslint-plugin-security",
+    "eslint-plugin-xss",
+    "prettier",
+    "@typescript/native-preview"
+  ]
+}

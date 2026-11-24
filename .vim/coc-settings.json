@@ -1,0 +1,5 @@
+{
+  "eslint.experimental.useFlatConfig": false,
+  "tsserver.useLocalTsdk": true,
+  "tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib"
+}

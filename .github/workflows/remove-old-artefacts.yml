@@ -1,0 +1,11 @@
+name: Remove old artefacts
+on:
+  schedule:
+    - cron: '0 0 * * 0' # every week (Sunday)
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  remove-old-artefacts:
+    permissions:
+      actions: write
+    uses: xhrdev/actions/.github/workflows/remove-old-artefacts.yml@master

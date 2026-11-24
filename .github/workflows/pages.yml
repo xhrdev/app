@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: pages
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - LICENSE
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: out
+          # public/.nojekyll must survive: without it pages runs jekyll, which
+          # drops the _next/ directory and leaves the site unstyled
+          include-hidden-files: true
+          retention-days: 1
+
+  # publishes to the gh-pages branch (pages source: "deploy from a branch")
+  # rather than via deploy-pages, so the pr previews under pr-preview/ can live
+  # on the same site. clean-exclude keeps them across production deploys.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      # the deploy action runs git against the checked-out repo
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: out
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          clean-exclude: pr-preview/
+          folder: out
+          # a plain commit per deploy, no force-push: gh-pages is also written
+          # by the preview workflow
+          single-commit: false
