@@ -1,0 +1,79 @@
+Show HN: no more anti-bot blocks for web scrapers
+
+hi hn, i'm john. i posted xhr.dev here in nov and dec 2024 [1][2]. the top
+comment on the second one was, "how are we supposed to try it? there's nothing
+to try." that bugged me. so this time the post is a repo of scripts that run
+against live sites, and a demo solver you can point them at without talking to
+me.
+
+grainger.com is behind datadome. this gets you a clearance cookie for it:
+
+  git clone git@github.com:xhrdev/examples.git examples && cd $_
+  npm ci --ignore-scripts  # skips the playwright + lightpanda download
+  echo 'host=trial.xhr.dev' >> .env
+  echo 'api_key=hn-74d95679d99305651292f160e4fe5645beac346d93624f1d' >> .env
+  npm run grainger
+
+that key is shared by everyone reading this and expires 2026-08-31. it's rate
+limited to 20 solves a minute and 1200 an hour across all of you, so a 429 with
+a Retry-After is the box being polite, not the solver failing. wait a minute
+and retry. want your own key without the shared limit: john@xhr.dev
+
+every script prints RESULT: SUCCESS or RESULT: FAIL. a run looks like this:
+
+  no proxy= set — going out from this machine's address
+  GET https://www.grainger.com/
+    <- HTTP 403 (775 bytes)
+    challenge: interstitial cid=AHrlqAAAAAMALPV1F8Z1...
+  GET challenge document
+    <- HTTP 200 (483521 bytes)
+  POST /dd/solve
+    <- prepared submission
+  POST submission
+    <- HTTP 200
+  clearance cookie: datadome=NIKXL3PD3_82wcb4zaqkktwmmw5G6...
+  verifying against the target
+    <- HTTP 200 (497309 bytes) "Grainger Industrial Supply"
+  DIRECT = SOLVED
+  RESULT: SUCCESS
+
+that's four http requests via undici, no browser anywhere. drop
+--ignore-scripts and `npm ci` pulls playwright and lightpanda, then `npm run
+grainger:lightpanda` does the same solve inside lightpanda, a headless browser
+with no renderer. there are also axios, plain fetch, requests, httpx, urllib
+and curl versions, plus akamai examples against comcast.com and edd.ca.gov.
+
+to go out through a proxy instead of your own ip, which is what you'd do in
+your own infra:
+
+  echo 'proxy=http://your.proxy.connection.string.here' >> .env
+
+what it is: a docker container that runs on your infrastructure. you hand it a
+challenge, it hands back a clearance cookie. your traffic goes to the target
+directly and neither your cookies nor your tokens are sent to us. it works with
+egress turned off — no outside vendors, no captcha farms, no phoning home — it
+is meant to get through enterprise infosec review. pricing is a flat fee with
+unlimited solves. we don't meter requests.
+
+we solve at the payload level rather than driving a browser, which is why a
+solve is a few hundred milliseconds and why the solvers survive vendors'
+routine patches. minor updates don't take them down; major refactors do, and
+then we rebuild. akamai bot manager shipped in april, datadome in august, more
+
+my cofounder richard has been doing this for 15+ years. he booked a call off
+[1] wanting to be a customer, we started talking, and we've been building
+together for about 15 months. how we think about it: we're the n64 expansion
+pak for the ai browser companies — you keep your stack, we handle the antibot.
+
+two things i'd like from this post:
+
+1. if you're scraping at real volume and getting blocked, this works today and
+i'd like you to use it. email john@xhr.dev
+
+2. i want to know what you are using right now. bright data unblocker?
+oxylabs? 2captcha? something in-house? a stealth browser? i'd like to hear what
+you're paying, and what your success rate actually looks like. or just how
+you're handling antibot bypasses generally.
+
+[1] https://news.ycombinator.com/item?id=42347252
+[2] https://news.ycombinator.com/item?id=42193973

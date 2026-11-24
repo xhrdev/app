@@ -1,0 +1,28 @@
+# xhr.dev
+
+> Self-hosted anti-bot solvers that keep working after the vendor's next update.
+
+xhr.dev ships a Docker container that solves anti-bot challenges (Akamai Bot
+Manager, DataDome, F5/Shape) entirely inside the customer's own
+infrastructure. Traffic, cookies, and tokens never leave the customer's
+network -- there is no third-party solving API in the loop, and it works with
+outbound internet disabled. Solving happens at the payload level, not by
+driving a browser, so a solve takes milliseconds and survives vendors'
+routine (non-structural) updates. Pricing is a flat fee for unlimited solves.
+
+## Docs
+
+- [Getting started](https://docs.xhr.dev/): overview and integration paths
+- [Full documentation bundle](https://docs.xhr.dev/llms-full.txt): every docs
+  page concatenated, for an agent that wants the whole corpus in context
+- [Deployment](https://docs.xhr.dev/deployment.html)
+- [Integrating via MCP](https://docs.xhr.dev/integrate-mcp.html)
+- [Integrating via an LLM agent](https://docs.xhr.dev/integrate-claude.html)
+- [API reference: Akamai](https://docs.xhr.dev/api-akamai.html)
+- [API reference: DataDome](https://docs.xhr.dev/api-datadome.html)
+- [API reference: F5 / Shape](https://docs.xhr.dev/api-f5.html)
+
+## Contact
+
+- Email: hello@xhr.dev
+- Runnable examples: https://github.com/xhrdev/examples
