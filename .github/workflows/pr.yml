@@ -13,21 +13,45 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
+# inlined: a public repo cannot call reusable workflows stored in a private repo
 jobs:
   build-and-test:
-    uses: xhrdev/actions/.github/workflows/pr.yml@master
-    with:
-      codecov: false
-    secrets: inherit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
-      pull-requests: write
-      packages: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: make ci
 
   dependabot-approve-and-automerge:
-    uses: xhrdev/actions/.github/workflows/dependabot-approve-and-automerge.yml@master
+    runs-on: ubuntu-slim
+    timeout-minutes: 2
     needs:
       - build-and-test
     permissions:
       pull-requests: write
       contents: write
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Approve a PR
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable auto-merge for Dependabot PRs
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
