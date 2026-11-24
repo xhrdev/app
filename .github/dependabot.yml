@@ -29,6 +29,9 @@ updates:
       interval: weekly
     assignees:
       - skilbjo
+    # private shared workflows; dependabot cannot read the repo
+    ignore:
+      - dependency-name: "xhrdev/*"
     groups:
       github-actions:
         patterns:
