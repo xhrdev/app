@@ -16,6 +16,8 @@ concurrency:
 jobs:
   build-and-test:
     uses: xhrdev/actions/.github/workflows/pr.yml@master
+    with:
+      codecov: false
     secrets: inherit
     permissions:
       contents: read
