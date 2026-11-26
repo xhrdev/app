@@ -10,7 +10,7 @@ grainger.com is behind datadome. this gets you a clearance cookie for it:
 
   git clone git@github.com:xhrdev/examples.git examples && cd $_
   npm ci --ignore-scripts  # skips the playwright + lightpanda download
-  echo 'host=trial.xhr.dev' >> .env
+  echo 'host=trial.xhrdev.com' >> .env
   echo 'api_key=hn-74d95679d99305651292f160e4fe5645beac346d93624f1d' >> .env
   npm run grainger
 
