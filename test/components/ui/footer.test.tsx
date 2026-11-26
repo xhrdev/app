@@ -20,7 +20,7 @@ describe('Footer Component', () => {
     render(<Footer />);
     assert.strictEqual(
       screen.getByText('docs').closest('a')?.getAttribute('href'),
-      'https://docs.xhr.dev/'
+      'https://docs.xhrdev.com/'
     );
     assert.strictEqual(
       screen.getByText('status').closest('a')?.getAttribute('href'),

@@ -34,7 +34,7 @@ describe('Navbar Component', () => {
     render(<Navbar />);
     assert.strictEqual(
       screen.getByText('docs').closest('a')?.getAttribute('href'),
-      'https://docs.xhr.dev/'
+      'https://docs.xhrdev.com/'
     );
     assert.strictEqual(
       screen.getByText('faq').closest('a')?.getAttribute('href'),

@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       userAgent: '*',
     },
-    sitemap: 'https://xhr.dev/sitemap.xml',
+    sitemap: 'https://xhrdev.com/sitemap.xml',
   };
 }

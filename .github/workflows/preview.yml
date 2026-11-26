@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: preview
 
-# every pr gets https://xhr.dev/pr-preview/pr-<n>/, published to the gh-pages
+# every pr gets https://xhrdev.com/pr-preview/pr-<n>/, published to the gh-pages
 # branch and removed again when the pr closes. same-repo prs only: fork and
 # dependabot prs get a read-only token, so they cannot push the branch.
 on:

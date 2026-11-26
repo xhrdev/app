@@ -1,6 +1,6 @@
 import { withBase } from '@/lib/base-path';
 
-const DOCS = 'https://docs.xhr.dev/';
+const DOCS = 'https://docs.xhrdev.com/';
 
 const LINKS: [string, string][] = [
   ['docs', DOCS],

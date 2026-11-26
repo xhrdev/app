@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       { sizes: '32x32', type: 'image/png', url: '/assets/icon-32.png' },
     ],
   },
-  metadataBase: new URL('https://xhr.dev'),
+  metadataBase: new URL('https://xhrdev.com'),
   openGraph: {
     description: DESCRIPTION,
     // a checked-in png rather than an `opengraph-image` route: the export
@@ -83,7 +83,7 @@ const ORG_JSON_LD = {
   description: DESCRIPTION,
   email: 'hello@xhr.dev',
   name: 'xhr.dev',
-  url: 'https://xhr.dev',
+  url: 'https://xhrdev.com',
 };
 
 export default function RootLayout({

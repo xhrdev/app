@@ -2,7 +2,7 @@
 
 [![pages](https://github.com/xhrdev/app/actions/workflows/pages.yml/badge.svg)](https://github.com/xhrdev/app/actions/workflows/pages.yml)
 
-the marketing site for <https://xhr.dev>. a fully static site (`next build` with
+the marketing site for <https://xhrdev.com>. a fully static site (`next build` with
 `output: 'export'`), deployed to GitHub Pages; there is no server, auth, database, or payment flow.
 
 ## quickstart
@@ -39,16 +39,17 @@ loaded via `--import`:
 ## deploy
 
 the site is a static export (`npm run build` writes it to `out/`). there is no
-server code. it is served from two places (the site on github pages, a redirect domain on aws):
+server code. it is served from two places (the site on github pages, the old domain's web
+names as a redirect on aws):
 
 | hostname | served by | what it does |
 | --- | --- | --- |
-| `xhr.dev` | github pages | the site. `public/CNAME` sets the custom domain; https is enforced. |
-| `www.xhr.dev` | github pages | github 301s it to `xhr.dev`. |
-| `xhrdev.com`, `www.xhrdev.com` | cloudfront (aws) | a cloudfront function 301s everything (path and query kept) to `https://xhr.dev`. |
+| `xhrdev.com` | github pages | the site. `public/CNAME` sets the custom domain; https is enforced. |
+| `www.xhrdev.com` | github pages | github 301s it to `xhrdev.com`. |
+| `xhr.dev`, `www.xhr.dev` | cloudfront (aws) | a cloudfront function 301s everything (path and query kept) to `https://xhrdev.com`. |
 
-github pages can serve only one custom domain, which is why the second registered
-domain is a redirect on aws. it is defined in `org-formation`, not in this repo.
+github pages can serve only one custom domain, which is why the previous domain
+is a redirect on aws. it is defined in `org-formation`, not in this repo.
 
 ### how a push deploys
 
@@ -65,7 +66,7 @@ the workflow needs no secrets. pushes that only touch `*.md` are skipped. PRs ru
 
 ### pr previews
 
-every same-repo pr gets `https://xhr.dev/pr-preview/pr-<n>/` (the url is
+every same-repo pr gets `https://xhrdev.com/pr-preview/pr-<n>/` (the url is
 commented on the pr) and the folder is deleted when the pr closes.
 `preview.yml` builds with `NEXT_PUBLIC_BASE_PATH=/pr-preview/pr-<n>`, which
 `next.config.ts` turns into `basePath` and `src/lib/base-path.ts` applies to
@@ -83,9 +84,9 @@ the few raw `<img>`/`<a>` urls. previews set `robots: noindex`.
 lives in `org-formation` at `spec/600-dns/xhrdev.yml` and deploys through its
 codepipeline (about 2 minutes after a push to master):
 
-- `xhr.dev`: github pages' four A and four AAAA addresses.
-- `www.xhr.dev`: CNAME to `xhrdev.github.io`.
-- `xhrdev.com`, `www.xhrdev.com`: alias / CNAME to the cloudfront redirect distribution.
+- `xhrdev.com`: github pages' four A and four AAAA addresses.
+- `www.xhrdev.com`: CNAME to `xhrdev.github.io`.
+- `xhr.dev`, `www.xhr.dev`: alias / CNAME to the cloudfront redirect distribution.
 
 ### things that behave differently on pages
 

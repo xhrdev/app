@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       lastModified: new Date(),
       priority: 1,
-      url: 'https://xhr.dev/',
+      url: 'https://xhrdev.com/',
     },
   ];
 }

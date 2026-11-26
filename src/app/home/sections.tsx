@@ -1,6 +1,6 @@
 const CAL =
   'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2uDlsqLG_VZLl3s3ri_-YIXD3xXi5WzY21o0dFuk6Gq4HhcXwJBxUz-1K6kMGxTEf4oIPny-nV';
-const DOCS = 'https://docs.xhr.dev/';
+const DOCS = 'https://docs.xhrdev.com/';
 
 const CUSTOMERS = ['supergood.ai', 'trymemorylane.com'];
 
