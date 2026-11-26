@@ -5,7 +5,11 @@ import { useEffect, useState } from 'react';
 type TermLine = { c?: string; d?: string; t: string; w: number };
 
 const TERM: TermLine[] = [
-  { d: '$ ', t: 'docker run -d -p 8080:8080 ghcr.io/xhrdev-<org>/xhrdev', w: 1000 },
+  {
+    d: '$ ',
+    t: 'docker run -d -p 8080:8080 ghcr.io/xhrdev-<org>/xhrdev',
+    w: 1000,
+  },
   { c: '#4ade80', t: 'solver up · listening on :8080', w: 500 },
   { d: '$ ', t: 'curl -s localhost:8080/solve -d @challenge.json', w: 950 },
   { c: '#4ade80', t: '{ "token": "9Fk2…", "status": "ok" }', w: 2600 },
