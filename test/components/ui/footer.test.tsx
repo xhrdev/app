@@ -7,7 +7,7 @@ import { Footer } from '#src/components/ui/footer.js';
 describe('Footer Component', () => {
   it('renders the logo', () => {
     render(<Footer />);
-    const logo = screen.getByAltText('xhr.dev');
+    const logo = screen.getByAltText('xhrdev');
     assert.strictEqual(logo.getAttribute('src'), '/assets/logo.svg');
   });
 

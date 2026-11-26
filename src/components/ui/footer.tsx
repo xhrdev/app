@@ -25,7 +25,7 @@ export const Footer = () => (
     >
       <div style={{ alignItems: 'center', display: 'flex', gap: 20 }}>
         <img
-          alt="xhr.dev"
+          alt="xhrdev"
           height={18}
           src={withBase('/assets/logo.svg')}
           style={{ display: 'block', height: 18, width: 'auto' }}

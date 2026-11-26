@@ -7,7 +7,7 @@ import { Navbar } from '#src/components/ui/navbar.js';
 describe('Navbar Component', () => {
   it('renders the logo', () => {
     render(<Navbar />);
-    const logo = screen.getByAltText('xhr.dev');
+    const logo = screen.getByAltText('xhrdev');
     assert.ok(logo);
     assert.strictEqual(logo.getAttribute('src'), '/assets/logo.svg');
   });

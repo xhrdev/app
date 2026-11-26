@@ -24,9 +24,9 @@ export const Navbar = () => (
         justifyContent: 'space-between',
       }}
     >
-      <a aria-label="xhr.dev" href={withBase('/')}>
+      <a aria-label="xhrdev" href={withBase('/')}>
         <img
-          alt="xhr.dev"
+          alt="xhrdev"
           height={22}
           src={withBase('/assets/logo.svg')}
           style={{ display: 'block', height: 22, width: 'auto' }}
