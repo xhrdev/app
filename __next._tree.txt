@@ -4,4 +4,4 @@
 :HL["/_next/static/media/f940ade2ed2c7a84-s.p.2l7-10xxn95a9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/assets/logo.svg","image"]
 1:[["children",{"s":"__PAGE__","h":160}]]
-0:{"b":"bsG8wWReh27aX_gKayx_v","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"jmj-NReOjLMJBLfIZ2nxd","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

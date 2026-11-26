@@ -17,7 +17,7 @@ grainger.com is behind datadome. this gets you a clearance cookie for it:
 that key is shared by everyone reading this and expires 2026-08-31. it's rate
 limited to 20 solves a minute and 1200 an hour across all of you, so a 429 with
 a Retry-After is the box being polite, not the solver failing. wait a minute
-and retry. want your own key without the shared limit: john@xhr.dev
+and retry. want your own key without the shared limit: john@xhrdev.com
 
 every script prints RESULT: SUCCESS or RESULT: FAIL. a run looks like this:
 
@@ -68,7 +68,7 @@ pak for the ai browser companies — you keep your stack, we handle the antibot.
 two things i'd like from this post:
 
 1. if you're scraping at real volume and getting blocked, this works today and
-i'd like you to use it. email john@xhr.dev
+i'd like you to use it. email john@xhrdev.com
 
 2. i want to know what you are using right now. bright data unblocker?
 oxylabs? 2captcha? something in-house? a stealth browser? i'd like to hear what
