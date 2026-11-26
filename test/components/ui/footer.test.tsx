@@ -31,8 +31,8 @@ describe('Footer Component', () => {
       'https://www.linkedin.com/company/xhrdev/'
     );
     assert.strictEqual(
-      screen.getByText('hello@xhr.dev').closest('a')?.getAttribute('href'),
-      'mailto:hello@xhr.dev'
+      screen.getByText('hello@xhrdev.com').closest('a')?.getAttribute('href'),
+      'mailto:hello@xhrdev.com'
     );
   });
 
@@ -44,7 +44,7 @@ describe('Footer Component', () => {
       'noopener noreferrer'
     );
     assert.strictEqual(
-      screen.getByText('hello@xhr.dev').closest('a')?.getAttribute('target'),
+      screen.getByText('hello@xhrdev.com').closest('a')?.getAttribute('target'),
       null
     );
   });

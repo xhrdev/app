@@ -1,5 +1,5 @@
 const CAL =
-  'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2uDlsqLG_VZLl3s3ri_-YIXD3xXi5WzY21o0dFuk6Gq4HhcXwJBxUz-1K6kMGxTEf4oIPny-nV';
+  'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0StxPnhSfRoPXxXNSlenk1eQqKYB32IzXvwzv2__QKmYNpLF8kRGVJVAMaKsraFwsAm4NMqDIO';
 const DOCS = 'https://docs.xhrdev.com/';
 
 const CUSTOMERS = ['supergood.ai', 'trymemorylane.com'];
@@ -299,8 +299,8 @@ export function CTA() {
             >
               book a call →
             </a>
-            <a className="btn btn-b" href="mailto:hello@xhr.dev">
-              hello@xhr.dev
+            <a className="btn btn-b" href="mailto:hello@xhrdev.com">
+              hello@xhrdev.com
             </a>
           </div>
         </div>

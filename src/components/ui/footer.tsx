@@ -6,7 +6,7 @@ const LINKS: [string, string][] = [
   ['docs', DOCS],
   ['status', 'https://status.xhr.dev/'],
   ['linkedin', 'https://www.linkedin.com/company/xhrdev/'],
-  ['hello@xhr.dev', 'mailto:hello@xhr.dev'],
+  ['hello@xhrdev.com', 'mailto:hello@xhrdev.com'],
 ];
 
 export const Footer = () => (

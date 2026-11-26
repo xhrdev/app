@@ -24,5 +24,5 @@ routine (non-structural) updates. Pricing is a flat fee for unlimited solves.
 
 ## Contact
 
-- Email: hello@xhr.dev
+- Email: hello@xhrdev.com
 - Runnable examples: https://github.com/xhrdev/examples

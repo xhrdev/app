@@ -81,7 +81,7 @@ const ORG_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   description: DESCRIPTION,
-  email: 'hello@xhr.dev',
+  email: 'hello@xhrdev.com',
   name: 'xhr.dev',
   url: 'https://xhrdev.com',
 };
